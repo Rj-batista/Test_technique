@@ -18,7 +18,7 @@ def search_pubmed(name_drug):
     journal_pubmed = pubmed_tri["journal"].tolist() #On garde dans une liste les journaux 
     #del pubmed_tri['journal'] #On supprime la colonne des journaux du DataFrame 
 
-    return(pubmed_tri,journal_pubmed)  
+    return(pubmed_tri, journal_pubmed)  
 
 def search_clinical(name_drug): 
     """Prends en entrée le nom d'une molécule et tri un DataFrame.
@@ -34,7 +34,7 @@ def search_clinical(name_drug):
     clinical_tri = clinical[clinical["scientific_title"].str.contains(name_drug) == True]  
     journal_clinical = clinical_tri["journal"].tolist() 
     #del clinical_tri['journal']
-    return(clinical_tri,journal_clinical)
+    return(clinical_tri, journal_clinical)
 
 def json_write(pubmed_tri, clinical_tri, journal_pubmed, journal_clinical, name_drug): 
     """Prends en entrée deux DataFrame, deux listes de journaux et le nom de la molécule.
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     result_search_pubmed = search_pubmed(name_drug)   
     result_search_clinical = search_clinical(name_drug)
     json_write(result_search_pubmed[0], result_search_clinical[0],
-                result_search_pubmed[1],result_search_clinical[1], name_drug) 
+                result_search_pubmed[1], result_search_clinical[1], name_drug) 
     print("{}.json a été crée".format(name_drug))
 
 
